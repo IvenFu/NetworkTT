@@ -12,10 +12,10 @@ Audio::Audio()
 m_netLostRTT(NULL)
 , m_netUpBw(NULL)
 , m_netDownBw(NULL)
-, m_qosDownBw(NULL)
 , m_qosLostRTT(NULL)
 , m_file(NULL)
 , m_bStartDownBw(TPR_FALSE)
+, m_llBeginTime(0)
 {
 	InitTPR::Init();
 }
@@ -53,8 +53,6 @@ int Audio::SimpleParsePacket(unsigned char* pData, unsigned int nDataLen)
 int Audio::Start()
 {
 	m_qosLostRTT = new Qos(m_config);
-	m_qosDownBw = new Qos(m_config);
-
 
 	m_config.m_sServerPort = 5678;
 	m_netLostRTT = new Net(m_config);
@@ -64,41 +62,16 @@ int Audio::Start()
 
 	m_config.m_sServerPort = 5680;
 	m_netDownBw = new Net(m_config);
-
+	m_file = new File();
 
 	m_qosLostRTT->Open(QosLostHandle, NULL,this, NPQ_QOS_RECEIVER);
 	m_netLostRTT->Open(NetLosteHandle,this);
 
-	//m_netUpBw->Open(NetUpBwHandle, this);
+	m_netUpBw->Open(NetUpBwHandle, this);
 
+	m_netDownBw->Open(NetDownBwHandle, this);
+	m_file->Open(CollectHandle, this);
 
-	
-	//m_qosDownBw->Open(QosHandle, NULL, this, NPQ_QOS_RECEIVER);
-	//m_netDownBw->Open(NetDownBwHandle, this);
-
-
-#if 0
-	while(1)
-	{
-		TPR_Sleep(1*1000);
-
-		unsigned int iRtt = 0;
-		unsigned char cLossRat = 0;
-		unsigned int iBitrate = 0;
-
-		if (m_config.bClient)
-		{
-			m_qosS.GetStat(&iRtt, &cLossRat, &iBitrate);
-		}
-		else
-		{
-			m_qosR.GetStat(&iRtt, &cLossRat, &iBitrate);
-		}
-			
-		printf("rtt = %d, lostrate=%d,iBitrate=%d\n", iRtt, cLossRat, iBitrate);
-		printf("iBitrate=%d\n", m_rate.Rate(TPR_TimeNow() / 1000));
-	}
-#endif
 	return 0;
 }
 
@@ -196,6 +169,8 @@ int Audio::NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 	{
 		TPR_UINT32  rate = m_rateUp.Rate(TPR_TimeNow() / 1000);
 
+		DEMO_DEBUG("[NetUpBw] bitrate=%d", rate);
+
 		unsigned char buffer[4] = {0};
 		memcpy(buffer, &rate, sizeof(TPR_UINT32));
 		m_netUpBw->InputData(buffer,4);
@@ -235,10 +210,12 @@ int Audio::NetDownBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 		bData = TPR_FALSE;
 	}
 
-	if (!m_file)
+	if (!m_bStartDownBw)
 	{
-		m_file = new File();
-		m_file->Open(CollectHandle,this);
+		DEMO_DEBUG("[NetDownBw] m_bStartDownBw");
+		printf("m_bStartDownBw begin\n");
+		m_llBeginTime = TPR_TimeNow();
+		m_bStartDownBw = TPR_TRUE;
 	}
 
 	return 0;
@@ -258,6 +235,19 @@ void Audio::CollectHandle(unsigned char* pData, unsigned int nDataLen, void* pUs
 
 int Audio::CollectHandleRel(unsigned char* pData, unsigned int nDataLen)
 {
+	if (!m_bStartDownBw)
+	{
+		return 0;
+	}
+
+	if (TPR_TimeNow() - m_llBeginTime > 5 * 1000 * 1000)
+	{
+		m_bStartDownBw = TPR_FALSE;
+		printf("m_bStartDownBw over\n");
+		DEMO_DEBUG("[NetDownBw] m_bStartDownBw");
+		return 0;
+	}
+
 	m_netDownBw->InputData(pData, nDataLen);
 	return 0;
 }

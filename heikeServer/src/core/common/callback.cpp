@@ -72,7 +72,7 @@ int OuterParam::DoCallback(CRtpPacket& rtpPacket)
 			//debug 以帧最后一个RTP包测试帧延时
 			if(rtpPacket.m_struHeader.bMarkerBit)
 			{
-				NPQ_DEBUG("[key]frameDelayUutR=%lld",TPR_TimeNow()-rtpPacket.m_nArriveTimeUs);
+				//NPQ_DEBUG("[key]frameDelayUutR=%lld",TPR_TimeNow()-rtpPacket.m_nArriveTimeUs);
 			}
 			
 			rtpPacket.m_bHaveCallback = TPR_TRUE;

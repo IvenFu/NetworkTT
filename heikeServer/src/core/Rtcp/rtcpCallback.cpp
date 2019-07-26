@@ -58,10 +58,10 @@ int RtcpCallback::TriggerRtcpCallback(RTCP_INFO_TYPE enType, void* pInfo)
 			m_innerParam.m_nRttUs = m_rttStat.RttUs();//生效rtt
 			m_innerParam.m_nRealRttUs = rttMs*1000;
 
-			if(m_innerParam.m_enMainType == NPQ_MAIN_AUDIO)
+			//if(m_innerParam.m_enMainType == NPQ_MAIN_AUDIO)
 			{
-				NPQ_DEBUG("[key]AudioRealRttUsR = %d",m_innerParam.m_nRealRttUs);
-				NPQ_DEBUG("[key]AudiofilterRttUsR = %d",m_innerParam.m_nRttUs);
+				NPQ_DEBUG("[key]RealRttUsR = %d",m_innerParam.m_nRealRttUs);
+				NPQ_DEBUG("[key]filterRttUsR = %d",m_innerParam.m_nRttUs);
 			}
 
 			m_rrInfo = *pInfoR;
@@ -87,7 +87,7 @@ int RtcpCallback::TriggerRtcpCallback(RTCP_INFO_TYPE enType, void* pInfo)
 			m_innerParam.m_nRttUs = m_rttStat.RttUs();//生效rtt
 			m_innerParam.m_nRealRttUs = rttMs*1000;
 
-			//NPQ_DEBUG("m_innerParam.m_nRttUs = %d, m_nRealRttUs = %d",m_innerParam.m_nRttUs,m_innerParam.m_nRealRttUs);
+			NPQ_DEBUG("m_innerParam.m_nRttUs = %d, m_nRealRttUs = %d",m_innerParam.m_nRttUs,m_innerParam.m_nRealRttUs);
 		}
 		break;
 	case INDEX_XR_REFERENCETIME_INFO:

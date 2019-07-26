@@ -196,9 +196,9 @@ int RtcpReceiver::AddRRBlock()
 	}
 
 	//NPQ_DEBUG("!!!!m_enMainType =%d,lossFraction = %f",m_innerParam.m_enMainType, (float)lossFraction/256);
-	if(m_innerParam.m_enMainType == NPQ_MAIN_AUDIO)
+	//if(m_innerParam.m_enMainType == NPQ_MAIN_AUDIO)
 	{
-		NPQ_DEBUG("[key]AuidolossRate1R = %d",lossFraction);
+		NPQ_DEBUG("[key]LossRate = %.02f",(float)lossFraction/256.0);
 	}
 
 	m_buffer.EnqueueDWord((lossFraction<<24) | totNumLost);//丢包率 以及 累计丢包个数

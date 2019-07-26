@@ -125,12 +125,12 @@ void ReceiverStatistics::NotePacketStat( CRtpPacket& rtpPacket,TPR_INT64 nArrive
 			static TPR_TIME_T t2 = 0;
 			if(bCheckType)
 			{
-				NPQ_DEBUG("[key]InputDiffR=%lld",TPR_TimeNow()-t1);
+				//NPQ_DEBUG("[key]InputDiffR=%lld",TPR_TimeNow()-t1);
 				t1 = TPR_TimeNow();
 			}
 			else
 			{
-				NPQ_DEBUG("[key]outputDiffR=%lld",TPR_TimeNow()-t2);
+				//NPQ_DEBUG("[key]outputDiffR=%lld",TPR_TimeNow()-t2);
 				t2 = TPR_TimeNow();
 			}
 		}
@@ -201,9 +201,9 @@ void ReceiverStatisticsWrap::NotePacketStat( CRtpPacket& rtpPacket )
 
 		//if(m_cbLossRate!=0)
 		{
-			NPQ_INFO("[key]realLoss = %d",m_cbLossRate);
+			//NPQ_INFO("[key]realLoss = %d",m_cbLossRate);
 		}
-		NPQ_INFO("real jitter = %d",m_statistics.Jitter());
+		//NPQ_INFO("real jitter = %d",m_statistics.Jitter());
 
 		m_statistics.Reset();
 		m_llRestTime = TPR_TimeNow();

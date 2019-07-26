@@ -9,7 +9,7 @@
 
 
 #############Setting start###########################################################
-PRJ = NPQos_V1.0
+PRJ = heikeServer
 
 #version define
 VERSION = x64_v1.0.0

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PRJ = NPQos_V1.0
+PRJ = heikeServer
 
 TARGET_NAME = libNPQos
 

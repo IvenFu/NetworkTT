@@ -10,7 +10,7 @@
 //#define N_OS_IOS
 //#define N_OS_ARM
 
-#define N_OS_WINDOWS
+#define N_OS_LINUX
 
 
 #endif

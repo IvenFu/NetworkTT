@@ -9,7 +9,8 @@ libs_src-y :=
 
 libs_third-y := 
 
+libs_third-y += -ltpr
 libs_third-y += -lrt
 libs_third-y += -lpthread
 
-libs_third-y += -ltpr
+

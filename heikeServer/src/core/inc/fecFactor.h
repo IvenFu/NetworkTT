@@ -1,7 +1,7 @@
 #ifndef _FEC_FACTOR_H_
 #define _FEC_FACTOR_H_
 
-#include "TPR_TPR.h"
+#include "TPR_tpr.h"
 
 // Number of time periods used for (max) window filter for packet loss
 // TODO(marpan): set reasonable window size for filtered packet loss,

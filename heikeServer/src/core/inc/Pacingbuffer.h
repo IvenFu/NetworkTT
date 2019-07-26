@@ -12,7 +12,7 @@
 #ifndef _PACINGBUFFER_H_
 #define _PACINGBUFFER_H_
 #include <list>
-#include "TPR_TPR.h"
+#include "TPR_tpr.h"
 #include "TPR_Mutex.h"
 
 using std::list;

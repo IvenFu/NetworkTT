@@ -12,7 +12,7 @@
 #ifndef _SDP_PARSE_H_
 #define _SDP_PARSE_H_
 
-#include "TPR_TPR.h"
+#include "TPR_tpr.h"
 #include "TPR_Types.h"
 #include <vector>
 #include <list>

@@ -3,7 +3,7 @@
 #ifndef _RATE_STATISTICS_H_
 #define _RATE_STATISTICS_H_
 
-#include "TPR_TPR.h"
+#include "TPR_tpr.h"
 #include "TPR_Mutex.h"
 #include "TPR_Guard.h"
 

@@ -2,7 +2,7 @@
 #define _CONFIG_H_
 
 #include <string>
-#include "TPR_TPR.h"
+#include "TPR_tpr.h"
 #include "TPR_Thread.h"
 #include "TPR_Utils.h"
 #include "TPR_Socket.h"

@@ -2,7 +2,7 @@
 #ifndef _JITTER_ESTIMATE_H_
 #define _JITTER_ESTIMATE_H_
 
-#include "TPR_TPR.h"
+#include "TPR_tpr.h"
 
 #define JITTER_MAX_CHANGE_TIME    (100)   //jitterbuffer time每次改变不超过100ms
 

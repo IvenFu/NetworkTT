@@ -1,7 +1,7 @@
 #ifndef _DEMO_AUIDO_H_
 #define _DEMO_AUIDO_H_
 
-#include "TPR_TPR.h"
+#include "TPR_tpr.h"
 #include "qos.h"
 #include "file.h"
 #include "netReceiver.h"

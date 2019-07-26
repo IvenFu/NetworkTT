@@ -8,7 +8,7 @@
 #include <iostream>
 
 #include "config.h"
-#include "TPR_Tpr.h"
+#include "TPR_tpr.h"
 #include "TPR_Mutex.h"
 #include "TPR_Guard.h"
 #include "NPQos.h"

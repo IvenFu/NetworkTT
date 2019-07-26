@@ -14,7 +14,7 @@
 #define _BUFFER_H_
 #include <list>
 #include <map>
-#include "TPR_TPR.h"
+#include "TPR_tpr.h"
 #include "TPR_Mutex.h"
 #include "rtp.h"
 #include "NPQosImpl.h"

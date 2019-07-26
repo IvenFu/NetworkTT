@@ -71,8 +71,8 @@ private:
 
 
 	Net* m_netDownBw;
-	Qos* m_qosDownBw;
 	File* m_file;
+	TPR_TIME_T m_llBeginTime;
 	TPR_BOOL m_bStartDownBw;
 
 	Config m_config;

@@ -8,15 +8,15 @@
  * History:     Created By guanguochen 2009-03-30
  * */
 
-#include "HPR_Thread.h"
+#include "TPR_Thread.h"
 #include <pthread.h>
 
 
 #ifdef CPU_BOND_SUP
 #define MARVELL_CPUS       (2)
 #define MARVELL_CPU_OFFSET    (2)
-static HPR_INT32 s_cpuCnt = 0;
-static HPR_VOID hpr_thread_set_2_cpu(HPR_HANDLE thHandle, int cpu)
+static TPR_INT32 s_cpuCnt = 0;
+static TPR_VOID TPR_thread_set_2_cpu(TPR_HANDLE thHandle, int cpu)
 {
     cpu_set_t cpu_mask;
     CPU_ZERO(&cpu_mask);
@@ -32,29 +32,29 @@ static HPR_VOID hpr_thread_set_2_cpu(HPR_HANDLE thHandle, int cpu)
 #endif
 
 /*************************************************
-函数名称 : HPR_Thread_Create
+函数名称 : TPR_Thread_Create
 函数功能 : 创建线程
 输入参数说明 : StartAddress为线程执行体例程；Params为
 传入线程执行体的参数；StackSize为线程堆栈的大小；
 IsSuspend表示创建的线程是否挂起；Priority为线程优先级；
 SchedPolicy为调度策略
-函数返回值的说明 : 成功返回线程句柄，失败返回HPR_INVALID_THREAD
+函数返回值的说明 : 成功返回线程句柄，失败返回TPR_INVALID_THREAD
 *************************************************/
-HPR_DECLARE HPR_HANDLE HPR_Thread_Create
+TPR_DECLARE TPR_HANDLE TPR_Thread_Create
 (
-    HPR_VOIDPTR(*StartAddress)(HPR_VOIDPTR), 
-    HPR_VOID* Params, 
-    HPR_UINT32 StackSize,
-    HPR_INT32 Priority
+    TPR_VOIDPTR(*StartAddress)(TPR_VOIDPTR), 
+    TPR_VOID* Params, 
+    TPR_UINT32 StackSize,
+    TPR_INT32 Priority
 )
 {
     int min = 0;
     int max = 0;
 	
     #ifdef CPU_BOND_SUP
-	static HPR_INT32 s_iStreamRecvCount = 0;	
-	HPR_INT32 iCpuCount = 0;
-	HPR_BOOL bStreamRecvTask = ((Priority==61)?HPR_TRUE:HPR_FALSE);//优先级为61的线程为码流接收线程
+	static TPR_INT32 s_iStreamRecvCount = 0;	
+	TPR_INT32 iCpuCount = 0;
+	TPR_BOOL bStreamRecvTask = ((Priority==61)?TPR_TRUE:TPR_FALSE);//优先级为61的线程为码流接收线程
 	if(bStreamRecvTask)
 	{		
 	    iCpuCount = s_iStreamRecvCount%MARVELL_CPUS+MARVELL_CPU_OFFSET;	
@@ -72,7 +72,7 @@ HPR_DECLARE HPR_HANDLE HPR_Thread_Create
     int ret = pthread_attr_init(&threadattr);
     if (ret)
     {
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
 
 #if 0 /* 暂不考虑支持APPLE 接口 */
@@ -83,7 +83,7 @@ HPR_DECLARE HPR_HANDLE HPR_Thread_Create
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
 #endif
 #endif
@@ -93,7 +93,7 @@ HPR_DECLARE HPR_HANDLE HPR_Thread_Create
     if (ret != 0)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
 
 
@@ -103,14 +103,14 @@ HPR_DECLARE HPR_HANDLE HPR_Thread_Create
     if(-1 == min)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
     
     max = sched_get_priority_max(SCHED_RR);
     if(-1 == max)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
     
     if (Priority < min)
@@ -127,7 +127,7 @@ HPR_DECLARE HPR_HANDLE HPR_Thread_Create
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
 #endif
 
@@ -138,7 +138,7 @@ HPR_DECLARE HPR_HANDLE HPR_Thread_Create
         {
             //printf("pthread_attr_setstacksize error\n");
             pthread_attr_destroy(&threadattr);
-            return (HPR_HANDLE)(HPR_INVALID_THREAD);
+            return (TPR_HANDLE)(TPR_INVALID_THREAD);
 
         }
     }
@@ -148,23 +148,23 @@ HPR_DECLARE HPR_HANDLE HPR_Thread_Create
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
     else
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)threadid;
+        return (TPR_HANDLE)threadid;
     }
 
     
 }
 
-HPR_DECLARE HPR_BOOL HPR_ThreadDetached_Create
+TPR_DECLARE TPR_BOOL TPR_ThreadDetached_Create
 (
-    HPR_VOIDPTR(*StartAddress)(HPR_VOIDPTR), 
-    HPR_VOID* Params, 
-    HPR_UINT32 StackSize,
-    HPR_INT32 Priority
+    TPR_VOIDPTR(*StartAddress)(TPR_VOIDPTR), 
+    TPR_VOID* Params, 
+    TPR_UINT32 StackSize,
+    TPR_INT32 Priority
 )
 {
     int min = 0;
@@ -174,13 +174,13 @@ HPR_DECLARE HPR_BOOL HPR_ThreadDetached_Create
     int ret = pthread_attr_init(&threadattr);
     if (ret)
     {
-        return HPR_FALSE;
+        return TPR_FALSE;
     }
     ret = pthread_attr_setdetachstate(&threadattr, PTHREAD_CREATE_DETACHED);
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return HPR_FALSE;
+        return TPR_FALSE;
     }
 
     if (StackSize != 0)
@@ -189,7 +189,7 @@ HPR_DECLARE HPR_BOOL HPR_ThreadDetached_Create
         if (ret != 0)
         {
             pthread_attr_destroy(&threadattr);
-            return HPR_FALSE;
+            return TPR_FALSE;
 
         }
     }
@@ -199,7 +199,7 @@ HPR_DECLARE HPR_BOOL HPR_ThreadDetached_Create
     if (ret != 0)
     {
         pthread_attr_destroy(&threadattr);
-        return HPR_FALSE;
+        return TPR_FALSE;
     }
 
     struct sched_param param;
@@ -207,14 +207,14 @@ HPR_DECLARE HPR_BOOL HPR_ThreadDetached_Create
     if(-1 == min)
     {
         pthread_attr_destroy(&threadattr);
-        return HPR_FALSE;
+        return TPR_FALSE;
     }
     
     max = sched_get_priority_max(SCHED_RR);
     if(-1 == max)
     {
         pthread_attr_destroy(&threadattr);
-        return HPR_FALSE;
+        return TPR_FALSE;
     }
     
     if (Priority < min)
@@ -231,7 +231,7 @@ HPR_DECLARE HPR_BOOL HPR_ThreadDetached_Create
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return HPR_FALSE;
+        return TPR_FALSE;
     }
 
 
@@ -240,19 +240,19 @@ HPR_DECLARE HPR_BOOL HPR_ThreadDetached_Create
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return HPR_FALSE;
+        return TPR_FALSE;
     }
     else
     {
-        //return (HPR_HANDLE)threadid;
+        //return (TPR_HANDLE)threadid;
         pthread_attr_destroy(&threadattr);
-        return HPR_TRUE;
+        return TPR_TRUE;
     }
     
 }
 
-HPR_DECLARE HPR_HANDLE HPR_ThreadDetached_CreateEx
-(HPR_VOIDPTR(*StartAddress)(HPR_VOIDPTR), HPR_VOID* Params, HPR_UINT32 StackSize, HPR_INT32 Priority)
+TPR_DECLARE TPR_HANDLE TPR_ThreadDetached_CreateEx
+(TPR_VOIDPTR(*StartAddress)(TPR_VOIDPTR), TPR_VOID* Params, TPR_UINT32 StackSize, TPR_INT32 Priority)
 {
     int min = 0;
     int max = 0;
@@ -260,13 +260,13 @@ HPR_DECLARE HPR_HANDLE HPR_ThreadDetached_CreateEx
     int ret = pthread_attr_init(&threadattr);
     if (ret)
     {
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
     ret = pthread_attr_setdetachstate(&threadattr, PTHREAD_CREATE_DETACHED);
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
 
     if (StackSize != 0)
@@ -275,7 +275,7 @@ HPR_DECLARE HPR_HANDLE HPR_ThreadDetached_CreateEx
         if (ret != 0)
         {
             pthread_attr_destroy(&threadattr);
-            return (HPR_HANDLE)HPR_INVALID_THREAD;
+            return (TPR_HANDLE)TPR_INVALID_THREAD;
 
         }
     }
@@ -285,7 +285,7 @@ HPR_DECLARE HPR_HANDLE HPR_ThreadDetached_CreateEx
     if (ret != 0)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
 
     struct sched_param param;
@@ -293,14 +293,14 @@ HPR_DECLARE HPR_HANDLE HPR_ThreadDetached_CreateEx
     if(-1 == min)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
     
     max = sched_get_priority_max(SCHED_RR);
     if(-1 == max)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
     
     if (Priority < min)
@@ -316,7 +316,7 @@ HPR_DECLARE HPR_HANDLE HPR_ThreadDetached_CreateEx
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
 
     pthread_t threadid;
@@ -324,86 +324,86 @@ HPR_DECLARE HPR_HANDLE HPR_ThreadDetached_CreateEx
     if (ret)
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)HPR_INVALID_THREAD;
+        return (TPR_HANDLE)TPR_INVALID_THREAD;
     }
     else
     {
         pthread_attr_destroy(&threadattr);
-        return (HPR_HANDLE)threadid;
+        return (TPR_HANDLE)threadid;
     }
     
 }
 
 
-HPR_DECLARE HPR_INT32 HPR_Thread_Exit()
+TPR_DECLARE TPR_INT32 TPR_Thread_Exit()
 {
     pthread_exit(0);
 }
 
 /*************************************************
-函数名称 : HPR_Thread_Wait
+函数名称 : TPR_Thread_Wait
 函数功能 : 等待线程线程的退出并关闭相应的句柄
 输入参数说明 : ThreadHandle为线程句柄
-函数返回值的说明 : 成功返回HPR_OK，失败返回HPR_ERROR
+函数返回值的说明 : 成功返回TPR_OK，失败返回TPR_ERROR
 *************************************************/
-HPR_DECLARE HPR_INT32 HPR_Thread_Wait(HPR_HANDLE ThreadHandle)
+TPR_DECLARE TPR_INT32 TPR_Thread_Wait(TPR_HANDLE ThreadHandle)
 {
-    if (ThreadHandle == (HPR_HANDLE)HPR_INVALID_THREAD)
+    if (ThreadHandle == (TPR_HANDLE)TPR_INVALID_THREAD)
     {
-        return HPR_ERROR;
+        return TPR_ERROR;
     }
 
     int ret = pthread_join((pthread_t)ThreadHandle, 0);
     if (ret)
     {
-        return HPR_ERROR;
+        return TPR_ERROR;
     }
     else
     {
         //close((int)ThreadHandle);
-        return HPR_OK;
+        return TPR_OK;
     }
 }
 
-HPR_DECLARE HPR_HANDLE CALLBACK HPR_Thread_GetSelfId()
+TPR_DECLARE TPR_HANDLE CALLBACK TPR_Thread_GetSelfId()
 {
-    return (HPR_HANDLE)pthread_self();
+    return (TPR_HANDLE)pthread_self();
 }
 
 
 /*************************************************
-函数名称 : HPR_Thread_Suspend
+函数名称 : TPR_Thread_Suspend
 函数功能 : 挂起线程
 输入参数说明 : ThreadHandle为线程句柄
-函数返回值的说明 : 返回HPR_OK
+函数返回值的说明 : 返回TPR_OK
 *************************************************/
-HPR_DECLARE HPR_INT32 HPR_Thread_Suspend(HPR_HANDLE ThreadHandle)
+TPR_DECLARE TPR_INT32 TPR_Thread_Suspend(TPR_HANDLE ThreadHandle)
 {
-    return HPR_OK;
+    return TPR_OK;
 }
 
 /*************************************************
-函数名称 : HPR_Thread_Resume
+函数名称 : TPR_Thread_Resume
 函数功能 : 恢复挂起的线程
 输入参数说明 : ThreadHandle为线程句柄
-函数返回值的说明 : 返回HPR_OK
+函数返回值的说明 : 返回TPR_OK
 *************************************************/
-HPR_DECLARE HPR_INT32 HPR_Thread_Resume(HPR_HANDLE ThreadHandle)
+TPR_DECLARE TPR_INT32 TPR_Thread_Resume(TPR_HANDLE ThreadHandle)
 {
-    return HPR_OK;
+    return TPR_OK;
 }
 
 /*************************************************
-函数名称 : HPR_Thread_SetPriority
+函数名称 : TPR_Thread_SetPriority
 函数功能 : 设置线程的优先级
 输入参数说明 : ThreadHandle为线程句柄；Priority为线程优先级
-函数返回值的说明 : 成功返回HPR_OK，失败返回HPR_ERROR
+函数返回值的说明 : 成功返回TPR_OK，失败返回TPR_ERROR
 *************************************************/
-HPR_DECLARE HPR_INT32 HPR_Thread_SetPriority(HPR_HANDLE ThreadHandle, HPR_INT32 Priority)
+TPR_DECLARE TPR_INT32 TPR_Thread_SetPriority(TPR_HANDLE ThreadHandle, TPR_INT32 Priority)
 {
-    if (ThreadHandle == (HPR_HANDLE)HPR_INVALID_THREAD)
+    if (ThreadHandle == (TPR_HANDLE)TPR_INVALID_THREAD)
     {
-        return HPR_ERROR;
+        return TPR_ERROR;
     }
 
     int policy;
@@ -411,7 +411,7 @@ HPR_DECLARE HPR_INT32 HPR_Thread_SetPriority(HPR_HANDLE ThreadHandle, HPR_INT32 
     int ret = pthread_getschedparam((pthread_t)ThreadHandle, &policy, &param);
     if (ret)
     {
-        return HPR_ERROR;
+        return TPR_ERROR;
     }
 
 #if defined (__linux__)
@@ -419,46 +419,46 @@ HPR_DECLARE HPR_INT32 HPR_Thread_SetPriority(HPR_HANDLE ThreadHandle, HPR_INT32 
     ret = pthread_setschedparam((pthread_t)ThreadHandle, policy, &param);
     if (ret)
     {
-        return HPR_ERROR;
+        return TPR_ERROR;
     }
     else
     {
-        return HPR_OK;
+        return TPR_OK;
     }
 #endif
     
-    return HPR_OK;
+    return TPR_OK;
 }
 
 /*************************************************
-函数名称 : HPR_Thread_SetSchedPolicy
+函数名称 : TPR_Thread_SetSchedPolicy
 函数功能 : 设置调度策略
 输入参数说明 : ThreadHandle为线程句柄；SchedPolicy为调度策略
-函数返回值的说明 : 成功返回HPR_OK，失败返回HPR_ERROR
+函数返回值的说明 : 成功返回TPR_OK，失败返回TPR_ERROR
 *************************************************/
-HPR_DECLARE HPR_INT32 HPR_Thread_SetSchedPolicy(HPR_HANDLE ThreadHandle, HPR_INT32 SchedPolicy)
+TPR_DECLARE TPR_INT32 TPR_Thread_SetSchedPolicy(TPR_HANDLE ThreadHandle, TPR_INT32 SchedPolicy)
 {
-    if (ThreadHandle == (HPR_HANDLE)HPR_INVALID_THREAD)
+    if (ThreadHandle == (TPR_HANDLE)TPR_INVALID_THREAD)
     {
-        return HPR_ERROR;
+        return TPR_ERROR;
     }
 
     pthread_attr_t thread_attr;
     int ret = pthread_attr_init(&thread_attr);
     if (ret)
     {
-        return HPR_ERROR;
+        return TPR_ERROR;
     }
 
     ret = pthread_attr_setschedpolicy(&thread_attr, SchedPolicy);
     pthread_attr_destroy(&thread_attr);
     if (ret)
     {
-        return HPR_ERROR;
+        return TPR_ERROR;
     }
     else
     {
-        return HPR_OK;
+        return TPR_OK;
     }
 }
 

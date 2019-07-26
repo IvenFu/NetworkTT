@@ -246,20 +246,27 @@ int Audio::CollectHandleRel(unsigned char* pData, unsigned int nDataLen)
 		return 0;
 	}
 
-	if ((TPR_TimeNow() - m_llBeginTime > 10 * 1000 * 1000))
+	if (m_enThirdStatus == DOWNBW)
 	{
-		m_enThirdStatus = NONE;
-		printf("[NetDownBw] over\n");
-		DEMO_DEBUG("[NetDownBw] over");
-		return 0;
+		if (TPR_TimeNow() - m_llBeginTime > 5 * 1000 * 1000)
+		{
+			m_enThirdStatus = DOWNLOSTRATE;
+			m_file->SetBitRate(200 * 1024);
+			printf("begin down lostrate\n");
+			DEMO_DEBUG("[NetDownBw] begin down lostrate");
+			return 0;
+		}
 	}
-	else if (TPR_TimeNow() - m_llBeginTime > 5 * 1000 * 1000)
+	
+	if (m_enThirdStatus == DOWNLOSTRATE)
 	{
-		m_enThirdStatus = DOWNLOSTRATE;
-		m_file->SetBitRate(200 * 1024);
-		printf("begin down lostrate\n");
-		DEMO_DEBUG("[NetDownBw] begin down lostrate");
-		return 0;
+		if ((TPR_TimeNow() - m_llBeginTime > 10 * 1000 * 1000))
+		{
+			m_enThirdStatus = NONE;
+			printf("[NetDownBw] over\n");
+			DEMO_DEBUG("[NetDownBw] over");
+			return 0;
+		}
 	}
 
 	m_netDownBw->InputData(pData, nDataLen);

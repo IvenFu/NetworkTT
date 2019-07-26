@@ -73,7 +73,14 @@ private:
 	Net* m_netDownBw;
 	File* m_file;
 	TPR_TIME_T m_llBeginTime;
-	TPR_BOOL m_bStartDownBw;
+
+	enum THIRD_STATUS
+	{
+		NONE,
+		DOWNBW,
+		DOWNLOSTRATE,
+	};
+	THIRD_STATUS m_enThirdStatus;
 
 	Config m_config;
 	//RateStatistics m_rate;

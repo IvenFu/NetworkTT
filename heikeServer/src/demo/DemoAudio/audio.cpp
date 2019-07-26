@@ -14,7 +14,7 @@ m_netLostRTT(NULL)
 , m_netDownBw(NULL)
 , m_qosLostRTT(NULL)
 , m_file(NULL)
-, m_bStartDownBw(TPR_FALSE)
+, m_enThirdStatus(NONE)
 , m_llBeginTime(0)
 {
 	InitTPR::Init();
@@ -70,7 +70,10 @@ int Audio::Start()
 	m_netUpBw->Open(NetUpBwHandle, this);
 
 	m_netDownBw->Open(NetDownBwHandle, this);
+	m_file->SetBitRate(64 * 1024 * 1024);
 	m_file->Open(CollectHandle, this);
+
+
 
 	return 0;
 }
@@ -211,12 +214,14 @@ int Audio::NetDownBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 		bData = TPR_FALSE;
 	}
 
-	if (!m_bStartDownBw)
+	if (m_enThirdStatus == NONE)
 	{
 		DEMO_DEBUG("[NetDownBw] m_bStartDownBw");
 		printf("m_bStartDownBw begin\n");
+
 		m_llBeginTime = TPR_TimeNow();
-		m_bStartDownBw = TPR_TRUE;
+		m_file->SetBitRate(64 * 1024 * 1024);
+		m_enThirdStatus = DOWNBW;
 	}
 
 	return 0;
@@ -236,16 +241,24 @@ void Audio::CollectHandle(unsigned char* pData, unsigned int nDataLen, void* pUs
 
 int Audio::CollectHandleRel(unsigned char* pData, unsigned int nDataLen)
 {
-	if (!m_bStartDownBw)
+	if (m_enThirdStatus == NONE)
 	{
 		return 0;
 	}
 
 	if (TPR_TimeNow() - m_llBeginTime > 5 * 1000 * 1000)
 	{
-		m_bStartDownBw = TPR_FALSE;
-		printf("m_bStartDownBw over\n");
-		DEMO_DEBUG("[NetDownBw] m_bStartDownBw");
+		m_enThirdStatus = DOWNLOSTRATE;
+		m_file->SetBitRate(200 * 1024);
+		printf("begin down lostrate\n");
+		DEMO_DEBUG("[NetDownBw] begin down lostrate");
+		return 0;
+	}
+	else if((TPR_TimeNow() - m_llBeginTime > 10 * 1000 * 1000))
+	{
+		m_enThirdStatus = NONE;
+		printf("[NetDownBw] over\n");
+		DEMO_DEBUG("[NetDownBw] over");
 		return 0;
 	}
 

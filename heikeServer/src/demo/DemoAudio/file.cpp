@@ -12,7 +12,7 @@ File::File()
 ,m_pUser(NULL)
 ,m_uTimeStamp(0)
 ,m_sSeqNo(0)
-,m_iBitrate(32*1024*1024)
+,m_iBitrate(64*1024*1024)
 {
 	memset(m_buf, 0, BUF_LEN);
 }

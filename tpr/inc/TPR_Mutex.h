@@ -44,36 +44,14 @@ TPR_DECLARE TPR_INT32 CALLBACK TPR_MutexUnlock(TPR_MUTEX_T* pMutex);
 class TPR_DECLARE_CLASS TPR_Mutex
 {
 public:
-	TPR_Mutex()
-	{
-		TPR_MutexCreate(&m_mutex);
-	}
+	TPR_Mutex();
+	TPR_Mutex(TPR_UINT32 nFlag);
+	~TPR_Mutex();
+	TPR_INT32 Lock();
 
-	TPR_Mutex(TPR_UINT32 nFlag)
-	{
-		TPR_MutexCreate(&m_mutex, nFlag);
-	}
+	TPR_INT32 Unlock();
 
-	~TPR_Mutex()
-	{
-		TPR_MutexDestroy(&m_mutex);
-	}
-
-	TPR_INT32 Lock()
-	{
-		return TPR_MutexLock(&m_mutex);
-	}
-
-	TPR_INT32 Unlock()
-	{
-		return TPR_MutexUnlock(&m_mutex);
-	}
-
-	TPR_INT32 TryLock()
-	{
-		return TPR_MutexTryLock(&m_mutex);
-		 
-	}
+	TPR_INT32 TryLock();
 
 private:
 	TPR_MUTEX_T m_mutex;

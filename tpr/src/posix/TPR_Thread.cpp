@@ -97,7 +97,7 @@ TPR_DECLARE TPR_HANDLE TPR_Thread_Create
     }
 
 
-#if defined (__linux__)
+#if 0//defined (__linux__)
     struct sched_param param;
     min = sched_get_priority_min(SCHED_RR);
     if(-1 == min)
@@ -167,6 +167,7 @@ TPR_DECLARE TPR_BOOL TPR_ThreadDetached_Create
     TPR_INT32 Priority
 )
 {
+	#if 0
     int min = 0;
     int max = 0;
     
@@ -248,12 +249,16 @@ TPR_DECLARE TPR_BOOL TPR_ThreadDetached_Create
         pthread_attr_destroy(&threadattr);
         return TPR_TRUE;
     }
-    
+    #endif
+	
+	return TPR_FALSE;
+	
 }
 
 TPR_DECLARE TPR_HANDLE TPR_ThreadDetached_CreateEx
 (TPR_VOIDPTR(*StartAddress)(TPR_VOIDPTR), TPR_VOID* Params, TPR_UINT32 StackSize, TPR_INT32 Priority)
 {
+	#if 0
     int min = 0;
     int max = 0;
     pthread_attr_t threadattr;
@@ -331,7 +336,8 @@ TPR_DECLARE TPR_HANDLE TPR_ThreadDetached_CreateEx
         pthread_attr_destroy(&threadattr);
         return (TPR_HANDLE)threadid;
     }
-    
+    #endif
+	return NULL;
 }
 
 
@@ -414,7 +420,7 @@ TPR_DECLARE TPR_INT32 TPR_Thread_SetPriority(TPR_HANDLE ThreadHandle, TPR_INT32 
         return TPR_ERROR;
     }
 
-#if defined (__linux__)
+#if 0//defined (__linux__)
     param.__sched_priority = Priority;
     ret = pthread_setschedparam((pthread_t)ThreadHandle, policy, &param);
     if (ret)

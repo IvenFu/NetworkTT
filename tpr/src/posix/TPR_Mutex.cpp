@@ -68,6 +68,39 @@ TPR_DECLARE TPR_INT32 CALLBACK TPR_MutexUnlock(TPR_MUTEX_T* pMutex)
 	return pthread_mutex_unlock(pMutex) == 0? TPR_OK:TPR_ERROR;
 }
 
+TPR_Mutex::TPR_Mutex()
+{
+	TPR_MutexCreate(&m_mutex);
+}
+
+TPR_Mutex::TPR_Mutex(TPR_UINT32 nFlag)
+{
+	TPR_MutexCreate(&m_mutex, nFlag);
+}
+
+TPR_Mutex::~TPR_Mutex()
+{
+	TPR_MutexDestroy(&m_mutex);
+}
+
+TPR_INT32 TPR_Mutex::Lock()
+{
+	return TPR_MutexLock(&m_mutex);
+}
+
+TPR_INT32 TPR_Mutex::Unlock()
+{
+	return TPR_MutexUnlock(&m_mutex);
+}
+
+TPR_INT32 TPR_Mutex::TryLock()
+{
+	return TPR_MutexTryLock(&m_mutex);
+}
+
+
+
+
 
 
 

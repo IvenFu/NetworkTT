@@ -46,6 +46,12 @@ TPR_DECLARE TPR_UINT32 TPR_GetTimeTick()
 #endif
 }
 
+//返回从操作系统启动所经过的毫秒
+TPR_DECLARE TPR_UINT64 CALLBACK TPR_GetTimeTick64()
+{
+	//TBD
+	return (TPR_UINT64)TPR_GetTimeTick();
+}
 
 TPR_DECLARE TPR_UINT32 CALLBACK TPR_GetTimeTickSecs()
 {

@@ -46,6 +46,11 @@ TPR_DECLARE TPR_UINT32 TPR_GetTimeTick()
 #endif
 }
 
+TPR_DECLARE TPR_UINT64 TPR_GetTimeTick64()
+{
+	return (TPR_UINT64)TPR_GetTimeTick();
+}
+
 
 TPR_DECLARE TPR_UINT32 CALLBACK TPR_GetTimeTickSecs()
 {

@@ -22,6 +22,7 @@ CPP_OBJS = $(CPP_SRCS:%.cpp=%.o)
 INCLUDE_DIR := 
 INCLUDE_DIR += -I../../../inc/third/tpr
 INCLUDE_DIR += -I../../../inc/config
+INCLUDE_DIR += -I../../../inc
 INCLUDE_DIR += -I./inc
 
 
@@ -39,7 +40,9 @@ CFLAGS += $(INCLUDE_DIR)
 LDFLAGS += -L$(GLOBAL_LIB)
 LDFLAGS += -L$(GLOBAL_LIB_THIRD)
 
+
 LDFLAGS2 := $(libs-y)
+LDFLAGS2 += -lNPQos
 LDFLAGS2 += $(libs_third-y)
 
 $(TARGET): $(C_OBJS) $(CPP_OBJS)

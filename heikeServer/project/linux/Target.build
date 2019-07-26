@@ -3,3 +3,4 @@
 
 targets_src-y	 := $(SRC_PATH)/
 
+targets_src-y	 += $(SRC_PATH)/demo/DemoAudio

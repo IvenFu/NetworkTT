@@ -110,6 +110,7 @@
     <ClInclude Include="..\..\inc\interInclude.h" />
     <ClInclude Include="..\..\inc\TPR_Addr.h" />
     <ClInclude Include="..\..\inc\TPR_Config.h" />
+    <ClInclude Include="..\..\inc\TPR_Guard.h" />
     <ClInclude Include="..\..\inc\TPR_Mutex.h" />
     <ClInclude Include="..\..\inc\TPR_Net_Addr.h" />
     <ClInclude Include="..\..\inc\TPR_Select.h" />

@@ -1,1 +1,18 @@
-﻿
+﻿  TPR_Addr.cpp
+  TPR_Select.cpp
+  TPR_Socket.cpp
+d:\wxh\heikecur\networktt\tpr\src\tpr_socket.cpp(116): warning C4838: 从“TPR_UINT32”转换到“long”需要收缩转换
+d:\wxh\heikecur\networktt\tpr\src\tpr_socket.cpp(785): warning C4101: “addr”: 未引用的局部变量
+  TPR_Tpr.cpp
+  TPR_Utils.cpp
+  TPR_Mutex.cpp
+  TPR_Semaphore.cpp
+  TPR_Thread.cpp
+  TPR_Time.cpp
+  hpr.cpp
+    正在创建库 D:\wxh\heikecur\NetworkTT\tpr\project\vs2008\\..\..\bin\hpr.lib 和对象 D:\wxh\heikecur\NetworkTT\tpr\project\vs2008\\..\..\bin\hpr.exp
+  正在生成代码
+d:\wxh\heikecur\networktt\tpr\src\tpr_addr.cpp(116): warning C4715: “TPR_InetPton”: 不是所有的控件路径都返回值
+  All 121 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  hpr.vcxproj -> D:\wxh\heikecur\NetworkTT\tpr\project\vs2008\\..\..\bin\hpr.dll

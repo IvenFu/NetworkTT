@@ -5,7 +5,7 @@
 #include "qos.h"
 #include "file.h"
 #include "netReceiver.h"
-#include "netSender.h"
+//#include "netSender.h"
 #include "player.h"
 #include "DrateStatistics.h"
 

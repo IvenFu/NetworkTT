@@ -86,5 +86,8 @@
     <ClInclude Include="..\..\inc\TPR_Mutex.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\inc\TPR_Guard.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

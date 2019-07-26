@@ -182,7 +182,6 @@
     <ClCompile Include="DrateStatistics.cpp" />
     <ClCompile Include="file.cpp" />
     <ClCompile Include="netReceiver.cpp" />
-    <ClCompile Include="netSender.cpp" />
     <ClCompile Include="probe.cpp" />
     <ClCompile Include="qos.cpp" />
   </ItemGroup>
@@ -192,7 +191,6 @@
     <ClInclude Include="DrateStatistics.h" />
     <ClInclude Include="file.h" />
     <ClInclude Include="netReceiver.h" />
-    <ClInclude Include="netSender.h" />
     <ClInclude Include="probe.h" />
     <ClInclude Include="qos.h" />
   </ItemGroup>

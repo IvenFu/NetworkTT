@@ -1,1 +1,11 @@
-﻿
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  file.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\demo\demoaudio\file.cpp(44): warning C4244: “=”: 从“TPR_UINT16”转换到“unsigned char”，可能丢失数据
+d:\wxh\heikecur\networktt\heikeserver\src\demo\demoaudio\file.cpp(158): warning C4244: “-=”: 从“TPR_INT64”转换到“int”，可能丢失数据
+  audio.cpp
+  正在生成代码...
+d:\wxh\heikecur\networktt\heikeserver\src\demo\demoaudio\file.cpp(115): warning C4715: “File::SetBitRate”: 不是所有的控件路径都返回值
+  正在编译...
+  probe.cpp
+  正在生成代码...
+  DemoAudio.vcxproj -> D:\wxh\heikecur\NetworkTT\heikeServer\src\demo\DemoAudio\..\..\..\bin\DemoAudio.exe

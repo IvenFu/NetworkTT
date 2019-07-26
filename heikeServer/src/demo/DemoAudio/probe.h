@@ -11,12 +11,5 @@
 
 #endif
 
-int ProbingLostrateAndRTT();
-int GetLostrateAndRTT();
-
-int ProbingBw();
-int GetBw();
-
-
 
 #endif

@@ -14,6 +14,8 @@ m_netLostRTT(NULL)
 , m_netDownBw(NULL)
 , m_qosDownBw(NULL)
 , m_qosLostRTT(NULL)
+, m_file(NULL)
+, m_bStartDownBw(TPR_FALSE)
 {
 	InitTPR::Init();
 }
@@ -50,8 +52,8 @@ int Audio::SimpleParsePacket(unsigned char* pData, unsigned int nDataLen)
 
 int Audio::Start()
 {
-	m_qosLostRTT = new Qos();
-	m_qosDownBw = new Qos();
+	m_qosLostRTT = new Qos(m_config);
+	m_qosDownBw = new Qos(m_config);
 
 
 	m_config.m_sServerPort = 5678;
@@ -60,20 +62,19 @@ int Audio::Start()
 	m_config.m_sServerPort = 5679;
 	m_netUpBw = new Net(m_config);
 
-	m_config.m_sServerPort = 5678;
-	m_netDownBw = new NetSender(m_config);
+	m_config.m_sServerPort = 5680;
+	m_netDownBw = new Net(m_config);
 
 
 	m_qosLostRTT->Open(QosLostHandle, NULL,this, NPQ_QOS_RECEIVER);
-	//m_qosDownBw->Open(QosHandle, NULL, this, NPQ_QOS_RECEIVER);
-
 	m_netLostRTT->Open(NetLosteHandle,this);
 
 	m_netUpBw->Open(NetUpBwHandle, this);
 
 
-	//m_netDownBw->Open(NetReceHandle, this);
-
+	
+	//m_qosDownBw->Open(QosHandle, NULL, this, NPQ_QOS_RECEIVER);
+	m_netDownBw->Open(NetDownBwHandle, this);
 
 
 #if 0
@@ -184,6 +185,41 @@ int Audio::NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 {
 	int iPacketType;
 	TPR_BOOL bData;
+	
+	m_rateUp.Update(nDataLen, TPR_TimeNow() / 1000);
+
+	static TPR_TIME_T last;
+	
+	TPR_TIME_T now = TPR_TimeNow();
+
+	if (now - last> 1000*1000)
+	{
+		TPR_UINT32  rate = m_rateUp.Rate(TPR_TimeNow() / 1000);
+
+		unsigned char buffer[4] = {0};
+		memcpy(buffer, &rate, sizeof(TPR_UINT32));
+		m_netUpBw->InputData(buffer,4);
+	}
+
+	return 0;
+}
+
+void Audio::NetDownBwHandle(unsigned char* pData, unsigned int nDataLen, void* pUser)
+{
+	Audio* p = (Audio*)pUser;
+
+	if (NULL == p)
+	{
+		return;
+	}
+
+	p->NetDownBwHandleRel(pData, nDataLen);
+}
+
+int Audio::NetDownBwHandleRel(unsigned char* pData, unsigned int nDataLen)
+{
+	int iPacketType;
+	TPR_BOOL bData;
 	iPacketType = SimpleParsePacket(pData, nDataLen);
 
 	if (iPacketType == PACKET_ERROR)
@@ -199,14 +235,32 @@ int Audio::NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 		bData = TPR_FALSE;
 	}
 
-	if (bData)
+	if (!m_file)
 	{
-		m_rateUp.Update(nDataLen, TPR_TimeNow() / 1000);
+		m_file = new File();
+		m_file->Open(CollectHandle,this);
 	}
 
 	return 0;
 }
 
+void Audio::CollectHandle(unsigned char* pData, unsigned int nDataLen, void* pUser)
+{
+	Audio* p = (Audio*)pUser;
+
+	if (NULL == p)
+	{
+		return;
+	}
+
+	p->CollectHandleRel(pData, nDataLen);
+}
+
+int Audio::CollectHandleRel(unsigned char* pData, unsigned int nDataLen)
+{
+	m_netDownBw->InputData(pData, nDataLen);
+	return 0;
+}
 
 void Audio::QosLostHandle(TPR_BOOL bReceiver,TPR_BOOL bData, unsigned char* pData, unsigned int uDataLen, void* pUser )
 {

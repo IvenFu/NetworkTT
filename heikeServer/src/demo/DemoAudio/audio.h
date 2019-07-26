@@ -51,22 +51,29 @@ private:
 
 	static void NetLosteHandle(unsigned char* pData, unsigned int nDataLen, void* pUser);
 	int NetLosteHandleRel(unsigned char* pData, unsigned int nDataLen);
-
-	static void NetUpBwHandle(unsigned char* pData, unsigned int nDataLen, void* pUser);
-	int NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen);
-
 	static void QosLostHandle(TPR_BOOL bReceiver, TPR_BOOL bData, unsigned char* pData, unsigned int uDataLen, void* pUser);
 	int QosLostHandleRel(TPR_BOOL bReceiver, TPR_BOOL bData, unsigned char* pData, unsigned int uDataLen);
 
 
+	static void NetUpBwHandle(unsigned char* pData, unsigned int nDataLen, void* pUser);
+	int NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen);
+
+	static void NetDownBwHandle(unsigned char* pData, unsigned int nDataLen, void* pUser);
+	int NetDownBwHandleRel(unsigned char* pData, unsigned int nDataLen);
+	static void CollectHandle(unsigned char* pData, unsigned int nDataLen, void* pUser);
+	int CollectHandleRel(unsigned char* pData, unsigned int nDataLen);
+
 	Net* m_netLostRTT;
+	Qos* m_qosLostRTT;
+
 	Net* m_netUpBw;
 	RateStatistics m_rateUp;
 
 
 	Net* m_netDownBw;
 	Qos* m_qosDownBw;
-	Qos* m_qosLostRTT;
+	File* m_file;
+	TPR_BOOL m_bStartDownBw;
 
 	Config m_config;
 	//RateStatistics m_rate;

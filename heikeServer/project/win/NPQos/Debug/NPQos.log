@@ -1,1 +1,53 @@
-﻿
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  senderImpl.cpp
+  receiverImpl.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\video\receiverimpl.cpp(98): warning C4101: “iRet”: 未引用的局部变量
+  Util.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\util\util.cpp(247): warning C4293: “<<”: Shift 计数为负或过大，其行为未定义
+d:\wxh\heikecur\networktt\heikeserver\src\core\util\util.cpp(250): warning C4293: “<<”: Shift 计数为负或过大，其行为未定义
+d:\wxh\heikecur\networktt\heikeserver\src\core\util\util.cpp(252): warning C4293: “<<”: Shift 计数为负或过大，其行为未定义
+  timeUtil.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\util\timeutil.cpp(15): warning C4244: “=”: 从“TPR_TIME_T”转换到“unsigned int”，可能丢失数据
+  threadUtil.cpp
+  rtt.cpp
+  RtpAddExtension.cpp
+  rtp.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\util\rtp.cpp(220): warning C4018: “<”: 有符号/无符号不匹配
+d:\wxh\heikecur\networktt\heikeserver\src\core\util\rtp.cpp(310): warning C4018: “<”: 有符号/无符号不匹配
+d:\wxh\heikecur\networktt\heikeserver\src\core\util\rtp.cpp(779): warning C4244: “=”: 从“TPR_UINT16”转换到“unsigned char”，可能丢失数据
+  logCtrl.cpp
+  frame.cpp
+  senderBase.cpp
+  sender.cpp
+  statistics.cpp
+  rtcpSender.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\rtcp\rtcpsender.cpp(123): warning C4244: “=”: 从“TPR_TIME_T”转换到“TPR_UINT32”，可能丢失数据
+d:\wxh\heikecur\networktt\heikeserver\src\core\rtcp\rtcpsender.cpp(214): warning C4244: “=”: 从“TPR_TIME_T”转换到“unsigned int”，可能丢失数据
+  rtcpReceiver.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\rtcp\rtcpreceiver.cpp(227): warning C4244: “=”: 从“TPR_TIME_T”转换到“unsigned int”，可能丢失数据
+d:\wxh\heikecur\networktt\heikeserver\src\core\rtcp\rtcpreceiver.cpp(437): warning C4267: “初始化”: 从“size_t”转换到“TPR_UINT8”，可能丢失数据
+d:\wxh\heikecur\networktt\heikeserver\src\core\rtcp\rtcpreceiver.cpp(451): warning C4244: “=”: 从“TPR_UINT64”转换到“TPR_UINT8”，可能丢失数据
+  rtcpParser.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\rtcp\rtcpparser.cpp(192): warning C4018: “<=”: 有符号/无符号不匹配
+d:\wxh\heikecur\networktt\heikeserver\src\core\rtcp\rtcpparser.cpp(235): warning C4018: “<”: 有符号/无符号不匹配
+  rtcpCallback.cpp
+  rtcp.cpp
+  receiverBase.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\receiverbase.cpp(89): warning C4101: “iRet”: 未引用的局部变量
+  receiver.cpp
+  正在生成代码...
+  正在编译...
+  NPQosImpl.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\npqos\npqosimpl.cpp(118): warning C4101: “iRet”: 未引用的局部变量
+  NPQos.cpp
+  Manage.cpp
+  base.cpp
+  rateStatistics.cpp
+d:\wxh\heikecur\networktt\heikeserver\src\core\common\ratestatistics.cpp(63): warning C4244: “-=”: 从“const TPR_INT64”转换到“TPR_UINT32”，可能丢失数据
+  outerCtrl.cpp
+  frameStatistics.cpp
+  callback.cpp
+  正在生成代码...
+callback.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/INCREMENTAL:NO”规范)
+    正在创建库 ..\..\..\bin\NPQos.lib 和对象 ..\..\..\bin\NPQos.exp
+  NPQos.vcxproj -> D:\wxh\heikecur\NetworkTT\heikeServer\project\win\NPQos\..\..\..\bin\NPQos.dll

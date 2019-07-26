@@ -2,32 +2,6 @@
 #include "config.h"
 
 
-int Config::DoConfig()
-{
-	int iTemp=0;
-	int iRet;
-	char buf[128]={0};
-	printf("is This Server? Y/N:\n");
-
-	iRet = scanf("%s",buf);
-
-	if (buf[0] == 'Y' || buf[0] == 'y')
-	{
-		bClient = TPR_FALSE;
-
-		//m_szServerzIp.assign(buf);
-	}
-	else
-	{
-		bClient = TPR_TRUE;
-	}
-
-	
-
-	return 0;
-}
-
-
 FILE* g_DhLogFile = fopen("demo.log", "wb+");
 
 

@@ -19,9 +19,6 @@
     <ClCompile Include="netReceiver.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="netSender.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="qos.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -43,9 +40,6 @@
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="netReceiver.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="netSender.h">
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="qos.h">

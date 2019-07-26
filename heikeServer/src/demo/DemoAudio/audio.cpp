@@ -161,11 +161,11 @@ int Audio::NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 	
 	m_rateUp.Update(nDataLen, TPR_TimeNow() / 1000);
 
-	static TPR_TIME_T last;
+	static TPR_TIME_T last = TPR_TimeNow();
 	
 	TPR_TIME_T now = TPR_TimeNow();
 
-	if (now - last> 1000*1000)
+	if (now - last> 500*1000)
 	{
 		TPR_UINT32  rate = m_rateUp.Rate(TPR_TimeNow() / 1000);
 
@@ -174,6 +174,7 @@ int Audio::NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 		unsigned char buffer[4] = {0};
 		memcpy(buffer, &rate, sizeof(TPR_UINT32));
 		m_netUpBw->InputData(buffer,4);
+		last = now;
 	}
 
 	return 0;

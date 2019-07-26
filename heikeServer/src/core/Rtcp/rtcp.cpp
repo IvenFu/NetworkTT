@@ -328,7 +328,7 @@ int RTCP::RtcpThreadRel()
 
 	while(m_bStart)
 	{
-		TPR_SemTimedWait(&m_hSem,1*1000);
+		TPR_SemTimedWait(&m_hSem,500);
 		OutputRtcp(OUTPUT_BASIC,NULL);
 	}
 	return NPQ_OK;

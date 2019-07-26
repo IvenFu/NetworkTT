@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="NPQos">
+      <UniqueIdentifier>{40aa5953-728d-4796-8888-bc736c55250f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{c6aed464-de6a-4626-976b-1cbfce3cd632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc">
+      <UniqueIdentifier>{b81bee2f-b1e8-46d5-b04b-8161ff4b52ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\audio">
+      <UniqueIdentifier>{47929128-d16d-4b0c-ad73-44e492535ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rtcp">
+      <UniqueIdentifier>{d0a20e67-4c5a-4a8f-94cd-f9ccb91a68ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="video">
+      <UniqueIdentifier>{0023e6f3-13e1-46d0-956e-b183c6af0686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{dcc58908-a97d-4cc4-8186-1ae06626edb4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\core\NPQos\base.cpp">
+      <Filter>NPQos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\NPQos\Manage.cpp">
+      <Filter>NPQos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\NPQos\NPQos.cpp">
+      <Filter>NPQos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\NPQos\NPQosImpl.cpp">
+      <Filter>NPQos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Util\frame.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Util\logCtrl.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Util\rtp.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Util\RtpAddExtension.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Util\rtt.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Util\threadUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Util\timeUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Util\Util.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcp.cpp">
+      <Filter>Rtcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcpCallback.cpp">
+      <Filter>Rtcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcpParser.cpp">
+      <Filter>Rtcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcpReceiver.cpp">
+      <Filter>Rtcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcpSender.cpp">
+      <Filter>Rtcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\Rtcp\statistics.cpp">
+      <Filter>Rtcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\video\receiverImpl.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\video\senderImpl.cpp">
+      <Filter>video</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\common\callback.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\common\frameStatistics.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\common\outerCtrl.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\common\rateStatistics.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\core\receiver.cpp" />
+    <ClCompile Include="..\..\..\src\core\receiverBase.cpp" />
+    <ClCompile Include="..\..\..\src\core\sender.cpp" />
+    <ClCompile Include="..\..\..\src\core\senderBase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\core\inc\base.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\baseImpl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\BitRateProber.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\buffer.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\bwCallback.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\bwManager.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\callback.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\inc\config\config.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\congestionControl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\delayBasedBwe.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\fec.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\fecFactor.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\frame.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\frameStatistics.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\jitter.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\jitterEstimate.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\logCtrl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\Manage.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\nack.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\nextBase.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\NPQos.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\NPQosImpl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\outerCtrl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\PacedPacket.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\PaceSender.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\Pacingbuffer.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\pli.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\ProbeControler.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\protectionBitrateCalculator.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rateStatistics.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\receiver.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\receiverBase.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\receiverImpl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtcp.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtcpCallback.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtcpDefine.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtcpParser.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtcpReceiver.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtcpSender.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtp.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\RtpAddExtension.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtpDefine.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\RtpToNtpUtil.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\rtt.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\sdpParse.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\sender.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\senderBase.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\senderImpl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\SendSidebwEstimation.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\statistics.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\threadUtil.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\tickTimer.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\timeUtil.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\transportFeedback.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\transportFeedbackAdapter.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\TransportPacketInfo.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\Util.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\Vcmjitter.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\VCMTiming.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\versionCtrl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\audioRtp.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\bufferLevelFilter.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\decisionLogic.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\decoderBase.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\decoderDatabase.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\delayManager.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\delayPeakDetector.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\nackTracker.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\neteq.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\packBuffer.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\pcmAlgorithm.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\receiverAudioImpl.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\red.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\ringBuffer.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\senderAudioImpl.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\spliter.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\core\inc\audio\syncBuffer.h">
+      <Filter>inc\audio</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NPQos.rc" />
+  </ItemGroup>
+</Project>

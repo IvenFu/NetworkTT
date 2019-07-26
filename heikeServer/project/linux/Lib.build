@@ -1,0 +1,20 @@
+
+
+libs-y	 :=
+libs_src-y := 
+
+libs-y	 += -lHikFec
+libs_src-y += $(SRC_PATH)Fec/
+
+
+########################################################
+
+
+libs_third-y := 
+
+libs_third-y += -lrt
+libs_third-y += -lpthread
+
+libs_third-y += -lhpr
+
+libs_third-y += -laip

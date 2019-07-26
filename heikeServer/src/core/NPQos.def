@@ -1,0 +1,16 @@
+; SystemTransform.def : Declares the module parameters for the DLL.
+
+LIBRARY      "NPQos"
+
+EXPORTS
+    ; Explicit exports can go here
+
+	NPQ_Create
+	NPQ_Destroy
+	NPQ_Start
+	NPQ_Stop
+	NPQ_RegisterDataCallBack
+	NPQ_InputData
+	NPQ_SetParam
+	NPQ_GetStat
+	NPQ_SetLogFile

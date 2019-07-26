@@ -1,0 +1,5 @@
+
+
+
+targets_src-y	 := $(SRC_PATH)/
+

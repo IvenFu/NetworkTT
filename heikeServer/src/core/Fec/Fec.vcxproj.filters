@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{4ca527d1-db29-46ad-b6aa-fe8ec1a52526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8ebc63fd-45c1-4d00-a732-3600d0fcf1c2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\Decoder.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fec_private_tables_bursty.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\fec_private_tables_random.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\FecDecoder.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\FecEncoder.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\forward_error_correction.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\forward_error_correction_internal.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\HikFecInterface.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\HikFecInterfaceImpl.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\public.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\rtpInner.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\typedefs.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\utilInner.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\FecDecoder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FecEncoder.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\forward_error_correction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\forward_error_correction_internal.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HikFecInterface.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HikFecInterfaceImpl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rtpInner.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

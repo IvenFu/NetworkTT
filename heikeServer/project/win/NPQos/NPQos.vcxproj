@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9A6336B8-1EA8-486B-989F-582451B823A2}</ProjectGuid>
+    <RootNamespace>NPQos</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.705</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\..\bin\win64\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\..\bin\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\..\bin\win64\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\inc\config;..\..\..\src\core\inc;..\..\..\inc\third\tpr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NPQOS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>hpr.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\lib\win32\third;..\..\..\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>..\..\..\src\core\NPQos.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\inc\third\hpr;..\..\..\inc\third\hlog;..\..\..\inc\third\imux;..\..\..\inc\third\decoder;..\..\..\inc\config;..\..\..\src\core\inc;..\..\..\src\core\Fec\inc;..\..\..\src\core\sync;..\..\..\src\core\inc\audio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NPQOS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>hpr.lib;hlog.lib;Fec.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\lib\win64\third;..\..\..\lib\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile />
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\src\core\inc\NPQos.h ..\..\..\inc
+copy ..\..\..\inc\third\imux\IMuxDefine.h ..\..\..\inc
+copy ..\..\..\inc\third\imux\HKMI.h ..\..\..\inc
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>SubWCRev.exe  "$(ProjectDir)\..\..\.." "$(ProjectName).rc2" "$(ProjectName).rc" -f</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\..\..\inc\third\tpr;..\..\..\inc\config;..\..\..\src\core\inc;..\..\..\src\core\sync;..\..\..\src\core\inc\audio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NPQOS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>hpr.lib;hlog.lib;Fec.lib;aip_lib.lib;IMux.lib;g711codeclib.lib;AACCodecLib.lib;g722.1.lib;g726.lib;mp3declib.lib;opus1.0.2_vs08.lib;aacld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\lib\win32\third;..\..\..\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>..\..\..\src\core\NPQos.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\src\core\inc\NPQos.h ..\..\..\inc
+copy ..\..\..\inc\third\imux\IMuxDefine.h ..\..\..\inc
+copy ..\..\..\inc\third\imux\HKMI.h ..\..\..\inc
+copy ..\..\..\src\core\inc\NPQos.h ..\..\..\sdk\win32\
+copy ..\..\..\inc\third\imux\IMuxDefine.h ..\..\..\sdk\win32\
+copy ..\..\..\inc\third\imux\HKMI.h ..\..\..\sdk\win32\
+copy ..\..\..\bin\NPQos.dll ..\..\..\sdk\win32\
+copy ..\..\..\bin\NPQos.lib ..\..\..\sdk\win32\
+copy ..\..\..\bin\NPQos.pdb ..\..\..\sdk\win32\
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Command>SubWCRev.exe  "$(ProjectDir)\..\..\.." "$(ProjectName).rc2" "$(ProjectName).rc" -f</Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\..\..\inc\third\hpr;..\..\..\inc\third\hlog;..\..\..\inc\third\imux;..\..\..\inc\third\decoder;..\..\..\inc\config;..\..\..\src\core\Fec\inc;..\..\..\src\core\inc;..\..\..\src\core\sync;..\..\..\src\core\inc\audio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;NPQOS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>hpr.lib;hlog.lib;Fec.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\lib\win64\third;..\..\..\lib\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile />
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\..\src\core\inc\NPQos.h ..\..\..\inc
+copy ..\..\..\inc\third\imux\IMuxDefine.h ..\..\..\inc
+copy ..\..\..\inc\third\imux\HKMI.h ..\..\..\inc
+copy ..\..\..\src\core\inc\NPQos.h ..\..\..\sdk\win64\
+copy ..\..\..\inc\third\imux\IMuxDefine.h ..\..\..\sdk\win64\
+copy ..\..\..\inc\third\imux\HKMI.h ..\..\..\sdk\win64\
+copy ..\..\..\bin\win64\NPQos.dll ..\..\..\sdk\win64\
+copy ..\..\..\bin\win64\NPQos.lib ..\..\..\sdk\win64\
+copy ..\..\..\bin\win64\NPQos.pdb ..\..\..\sdk\win64\
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\core\common\callback.cpp" />
+    <ClCompile Include="..\..\..\src\core\common\frameStatistics.cpp" />
+    <ClCompile Include="..\..\..\src\core\common\outerCtrl.cpp" />
+    <ClCompile Include="..\..\..\src\core\common\rateStatistics.cpp" />
+    <ClCompile Include="..\..\..\src\core\NPQos\base.cpp" />
+    <ClCompile Include="..\..\..\src\core\NPQos\Manage.cpp" />
+    <ClCompile Include="..\..\..\src\core\NPQos\NPQos.cpp" />
+    <ClCompile Include="..\..\..\src\core\NPQos\NPQosImpl.cpp" />
+    <ClCompile Include="..\..\..\src\core\receiver.cpp" />
+    <ClCompile Include="..\..\..\src\core\receiverBase.cpp" />
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcp.cpp" />
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcpCallback.cpp" />
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcpParser.cpp" />
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcpReceiver.cpp" />
+    <ClCompile Include="..\..\..\src\core\Rtcp\rtcpSender.cpp" />
+    <ClCompile Include="..\..\..\src\core\Rtcp\statistics.cpp" />
+    <ClCompile Include="..\..\..\src\core\sender.cpp" />
+    <ClCompile Include="..\..\..\src\core\senderBase.cpp" />
+    <ClCompile Include="..\..\..\src\core\Util\frame.cpp" />
+    <ClCompile Include="..\..\..\src\core\Util\logCtrl.cpp" />
+    <ClCompile Include="..\..\..\src\core\Util\rtp.cpp" />
+    <ClCompile Include="..\..\..\src\core\Util\RtpAddExtension.cpp" />
+    <ClCompile Include="..\..\..\src\core\Util\rtt.cpp" />
+    <ClCompile Include="..\..\..\src\core\Util\threadUtil.cpp" />
+    <ClCompile Include="..\..\..\src\core\Util\timeUtil.cpp" />
+    <ClCompile Include="..\..\..\src\core\Util\Util.cpp" />
+    <ClCompile Include="..\..\..\src\core\video\receiverImpl.cpp" />
+    <ClCompile Include="..\..\..\src\core\video\senderImpl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\inc\config\config.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\audioRtp.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\bufferLevelFilter.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\decisionLogic.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\decoderBase.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\decoderDatabase.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\delayManager.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\delayPeakDetector.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\nackTracker.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\neteq.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\packBuffer.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\pcmAlgorithm.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\receiverAudioImpl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\red.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\ringBuffer.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\senderAudioImpl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\spliter.h" />
+    <ClInclude Include="..\..\..\src\core\inc\audio\syncBuffer.h" />
+    <ClInclude Include="..\..\..\src\core\inc\base.h" />
+    <ClInclude Include="..\..\..\src\core\inc\baseImpl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\BitRateProber.h" />
+    <ClInclude Include="..\..\..\src\core\inc\buffer.h" />
+    <ClInclude Include="..\..\..\src\core\inc\bwCallback.h" />
+    <ClInclude Include="..\..\..\src\core\inc\bwManager.h" />
+    <ClInclude Include="..\..\..\src\core\inc\callback.h" />
+    <ClInclude Include="..\..\..\src\core\inc\congestionControl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\delayBasedBwe.h" />
+    <ClInclude Include="..\..\..\src\core\inc\fec.h" />
+    <ClInclude Include="..\..\..\src\core\inc\fecFactor.h" />
+    <ClInclude Include="..\..\..\src\core\inc\frame.h" />
+    <ClInclude Include="..\..\..\src\core\inc\frameStatistics.h" />
+    <ClInclude Include="..\..\..\src\core\inc\jitter.h" />
+    <ClInclude Include="..\..\..\src\core\inc\jitterEstimate.h" />
+    <ClInclude Include="..\..\..\src\core\inc\logCtrl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\Manage.h" />
+    <ClInclude Include="..\..\..\src\core\inc\nack.h" />
+    <ClInclude Include="..\..\..\src\core\inc\nextBase.h" />
+    <ClInclude Include="..\..\..\src\core\inc\NPQos.h" />
+    <ClInclude Include="..\..\..\src\core\inc\NPQosImpl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\outerCtrl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\PacedPacket.h" />
+    <ClInclude Include="..\..\..\src\core\inc\PaceSender.h" />
+    <ClInclude Include="..\..\..\src\core\inc\Pacingbuffer.h" />
+    <ClInclude Include="..\..\..\src\core\inc\pli.h" />
+    <ClInclude Include="..\..\..\src\core\inc\ProbeControler.h" />
+    <ClInclude Include="..\..\..\src\core\inc\protectionBitrateCalculator.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rateStatistics.h" />
+    <ClInclude Include="..\..\..\src\core\inc\receiver.h" />
+    <ClInclude Include="..\..\..\src\core\inc\receiverBase.h" />
+    <ClInclude Include="..\..\..\src\core\inc\receiverImpl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtcp.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtcpCallback.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtcpDefine.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtcpParser.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtcpReceiver.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtcpSender.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtp.h" />
+    <ClInclude Include="..\..\..\src\core\inc\RtpAddExtension.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtpDefine.h" />
+    <ClInclude Include="..\..\..\src\core\inc\RtpToNtpUtil.h" />
+    <ClInclude Include="..\..\..\src\core\inc\rtt.h" />
+    <ClInclude Include="..\..\..\src\core\inc\sdpParse.h" />
+    <ClInclude Include="..\..\..\src\core\inc\sender.h" />
+    <ClInclude Include="..\..\..\src\core\inc\senderBase.h" />
+    <ClInclude Include="..\..\..\src\core\inc\senderImpl.h" />
+    <ClInclude Include="..\..\..\src\core\inc\SendSidebwEstimation.h" />
+    <ClInclude Include="..\..\..\src\core\inc\statistics.h" />
+    <ClInclude Include="..\..\..\src\core\inc\threadUtil.h" />
+    <ClInclude Include="..\..\..\src\core\inc\tickTimer.h" />
+    <ClInclude Include="..\..\..\src\core\inc\timeUtil.h" />
+    <ClInclude Include="..\..\..\src\core\inc\transportFeedback.h" />
+    <ClInclude Include="..\..\..\src\core\inc\transportFeedbackAdapter.h" />
+    <ClInclude Include="..\..\..\src\core\inc\TransportPacketInfo.h" />
+    <ClInclude Include="..\..\..\src\core\inc\Util.h" />
+    <ClInclude Include="..\..\..\src\core\inc\Vcmjitter.h" />
+    <ClInclude Include="..\..\..\src\core\inc\VCMTiming.h" />
+    <ClInclude Include="..\..\..\src\core\inc\versionCtrl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="NPQos.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -69,12 +69,12 @@ int Audio::Start()
 	m_qosLostRTT->Open(QosLostHandle, NULL,this, NPQ_QOS_RECEIVER);
 	m_netLostRTT->Open(NetLosteHandle,this);
 
-	m_netUpBw->Open(NetUpBwHandle, this);
+	//m_netUpBw->Open(NetUpBwHandle, this);
 
 
 	
 	//m_qosDownBw->Open(QosHandle, NULL, this, NPQ_QOS_RECEIVER);
-	m_netDownBw->Open(NetDownBwHandle, this);
+	//m_netDownBw->Open(NetDownBwHandle, this);
 
 
 #if 0

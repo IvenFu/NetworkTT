@@ -32,7 +32,7 @@ CPP_OBJS = $(CPP_SRCS:%.cpp=%.o)
 
 
 INCLUDE_DIR := 
-INCLUDE_DIR += -I../../inc/third/hpr
+INCLUDE_DIR += -I../../inc/third/tpr
 INCLUDE_DIR += -I../../inc/third/hlog
 INCLUDE_DIR += -I../../inc/third/imux
 INCLUDE_DIR += -I../../inc/third/decoder

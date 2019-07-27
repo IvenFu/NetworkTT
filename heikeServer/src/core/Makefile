@@ -65,6 +65,7 @@ LDFLAGS2 += $(libs_trans-y)
 
 $(TARGET): $(C_OBJS) $(CPP_OBJS)
 	$(GCPP) $(LDFLAGS) $^ $(LDFLAGS2) -o $@
+	cp $@ $(GLOBAL_LIB)
 ifeq ($(VER),release)
 	cp $@ $(SDK_PATH)/$(TARGET_NOSTRIP)
 	$(STRIP) $@

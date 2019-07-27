@@ -315,6 +315,7 @@ int hlogformatWarp(char* szLevel, const char* format, ...)
 		if(g_hLogFile)
 		{
 			fprintf(g_hLogFile, "%s", szTemp);
+			fflush(g_hLogFile);
 			return 0;
 		}
 

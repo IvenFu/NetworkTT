@@ -164,8 +164,8 @@ int Audio::NetDownLostHandleRel(unsigned char* pData, unsigned int nDataLen)
 {
 	if (m_enThirdStatus == NONE)
 	{
-		DEMO_DEBUG("[NetDownBw] m_bStartDownLost");
-		printf("[NetDownBw]m_bStartDownLost begin\n");
+		DEMO_DEBUG("[NetDownLost] m_bStartDownLost");
+		printf("[NetDownLost] begin\n");
 
 		m_llBeginTime = TPR_TimeNow();
 		m_file->SetBitRate(200 * 1024);
@@ -247,7 +247,7 @@ int Audio::NetDownBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 	if (m_enThirdStatus == NONE)
 	{
 		DEMO_DEBUG("[NetDownBw] m_bStartDownBw");
-		printf("m_bStartDownBw begin\n");
+		printf("[NetDownBw] begin\n");
 
 		m_llBeginTime = TPR_TimeNow();
 		m_file->SetBitRate(64 * 1024 * 1024);

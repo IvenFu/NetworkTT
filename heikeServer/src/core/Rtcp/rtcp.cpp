@@ -330,6 +330,8 @@ int RTCP::RtcpThreadRel()
 	{
 		TPR_SemTimedWait(&m_hSem,500);
 		OutputRtcp(OUTPUT_BASIC,NULL);
+
+		NPQ_DEBUG("[key]!!!video Bitrate Recovery = %d", m_struOuterParam.GetVideoBitrate());
 	}
 	return NPQ_OK;
 }

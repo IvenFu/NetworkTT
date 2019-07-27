@@ -54,6 +54,8 @@ private:
 	static void QosLostHandle(TPR_BOOL bReceiver, TPR_BOOL bData, unsigned char* pData, unsigned int uDataLen, void* pUser);
 	int QosLostHandleRel(TPR_BOOL bReceiver, TPR_BOOL bData, unsigned char* pData, unsigned int uDataLen);
 
+	static void NetDownLostHandle(unsigned char* pData, unsigned int nDataLen, void* pUser);
+	int NetDownLostHandleRel(unsigned char* pData, unsigned int nDataLen);
 
 	static void NetUpBwHandle(unsigned char* pData, unsigned int nDataLen, void* pUser);
 	int NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen);
@@ -66,22 +68,23 @@ private:
 	Net* m_netLostRTT;
 	Qos* m_qosLostRTT;
 
+	Net* m_netDownLost;
+
 	Net* m_netUpBw;
 	RateStatistics m_rateUp;
 
-
 	Net* m_netDownBw;
-	File* m_file;
 	TPR_TIME_T m_llBeginTime;
 
 	enum THIRD_STATUS
 	{
 		NONE,
 		DOWNBW,
-		DOWNLOSTRATE,
+		DOWNLOST,
 	};
-	THIRD_STATUS m_enThirdStatus;
 
+	THIRD_STATUS m_enThirdStatus;
+	File* m_file;
 	Config m_config;
 	//RateStatistics m_rate;
 };

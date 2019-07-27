@@ -13,6 +13,7 @@ m_netLostRTT(NULL)
 , m_netUpBw(NULL)
 , m_netDownBw(NULL)
 , m_qosLostRTT(NULL)
+, m_netDownLost(NULL)
 , m_file(NULL)
 , m_enThirdStatus(NONE)
 , m_llBeginTime(0)
@@ -58,23 +59,25 @@ int Audio::Start()
 	m_netLostRTT = new Net(m_config);
 
 	m_config.m_sServerPort = 5679;
-	m_netUpBw = new Net(m_config);
+	m_netDownLost = new Net(m_config);
 
 	m_config.m_sServerPort = 5680;
+	m_netUpBw = new Net(m_config);
+
+	m_config.m_sServerPort = 5681;
 	m_netDownBw = new Net(m_config);
 	m_file = new File();
 
 	m_qosLostRTT->Open(QosLostHandle, NULL,this, NPQ_QOS_RECEIVER);
 	m_netLostRTT->Open(NetLosteHandle,this);
 
+	m_netDownLost->Open(NetDownLostHandle, this);
+	m_file->Open(CollectHandle, this);
+
 	m_netUpBw->Open(NetUpBwHandle, this);
 
 	m_netDownBw->Open(NetDownBwHandle, this);
-	m_file->SetBitRate(64 * 1024 * 1024);
-	m_file->Open(CollectHandle, this);
-
-
-
+	
 	return 0;
 }
 
@@ -141,6 +144,33 @@ int Audio::NetLosteHandleRel(unsigned char* pData, unsigned int nDataLen)
 	//printf("m_qosR inputdata nDataLen=%d\n", nDataLen);
 	m_qosLostRTT->InputData(bData,pData,nDataLen);
 	//NPQ_DEMO("m_qosR inputdata end");
+
+	return 0;
+}
+
+void Audio::NetDownLostHandle(unsigned char* pData, unsigned int nDataLen, void* pUser)
+{
+	Audio* p = (Audio*)pUser;
+
+	if (NULL == p)
+	{
+		return;
+	}
+
+	p->NetDownLostHandleRel(pData, nDataLen);
+}
+
+int Audio::NetDownLostHandleRel(unsigned char* pData, unsigned int nDataLen)
+{
+	if (m_enThirdStatus == NONE)
+	{
+		DEMO_DEBUG("[NetDownBw] m_bStartDownLost");
+		printf("[NetDownBw]m_bStartDownLost begin\n");
+
+		m_llBeginTime = TPR_TimeNow();
+		m_file->SetBitRate(200 * 1024);
+		m_enThirdStatus = DOWNLOST;
+	}
 
 	return 0;
 }
@@ -246,29 +276,29 @@ int Audio::CollectHandleRel(unsigned char* pData, unsigned int nDataLen)
 		return 0;
 	}
 
-	if (m_enThirdStatus == DOWNBW)
+	if (m_enThirdStatus == DOWNLOST)
 	{
 		if (TPR_TimeNow() - m_llBeginTime > 5 * 1000 * 1000)
 		{
-			m_enThirdStatus = DOWNLOSTRATE;
-			m_file->SetBitRate(200 * 1024);
-			printf("begin down lostrate\n");
-			DEMO_DEBUG("[NetDownBw] begin down lostrate");
-			return 0;
-		}
-	}
-	
-	if (m_enThirdStatus == DOWNLOSTRATE)
-	{
-		if ((TPR_TimeNow() - m_llBeginTime > 10 * 1000 * 1000))
-		{
 			m_enThirdStatus = NONE;
-			printf("[NetDownBw] over\n");
-			DEMO_DEBUG("[NetDownBw] over");
+			printf("[NetDownLost]over\n");
+			DEMO_DEBUG("[NetDownLost]over");
 			return 0;
 		}
 	}
 
+	if (m_enThirdStatus == DOWNBW)
+	{
+		if (TPR_TimeNow() - m_llBeginTime > 5 * 1000 * 1000)
+		{
+			m_enThirdStatus = NONE;
+			m_file->SetBitRate(200 * 1024);
+			printf("[NetDownBw]over\n");
+			DEMO_DEBUG("[NetDownBw]over");
+			return 0;
+		}
+	}
+	
 	m_netDownBw->InputData(pData, nDataLen);
 	return 0;
 }

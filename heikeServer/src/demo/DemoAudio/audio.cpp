@@ -202,8 +202,8 @@ int Audio::NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 	{
 		TPR_UINT32  rate = m_rateUp.Rate(TPR_TimeNow() / 1000);
 
-		DEMO_DEBUG("[NetUpBw] bitrate=%d", rate);
-
+		DEMO_DEBUG("[NetUpBw] bitrate=%dKbps", rate/1024);
+		printf("[NetUpBw] bitrate=%dKbps", rate / 1024);
 		unsigned char buffer[4] = {0};
 		memcpy(buffer, &rate, sizeof(TPR_UINT32));
 		m_netUpBw->InputData(buffer,4);

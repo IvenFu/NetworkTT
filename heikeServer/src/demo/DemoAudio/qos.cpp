@@ -24,7 +24,7 @@ int Qos::Open(CallbackFunc2 pCallback, CallbackFuncCmd pCallbackCmd, void* pUser
 	int nRet;
 	int nNPQId;
 
-	//NPQ_SetLogFile("npp.log");
+	NPQ_SetLogFile("npp.log");
 
 	nNPQId = NPQ_Create(role);
 	if (nNPQId < 0)

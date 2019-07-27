@@ -7,7 +7,6 @@
 
 TPR_BOOL InitTPR::s_bInit = TPR_FALSE;
 
-
 Audio::Audio()
 :
 m_netLostRTT(NULL)
@@ -199,7 +198,7 @@ int Audio::NetUpBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 	
 	TPR_TIME_T now = TPR_TimeNow();
 
-	if (now - last> 500*1000)
+	if (now - last> 100*1000)
 	{
 		TPR_UINT32  rate = m_rateUp.Rate(TPR_TimeNow() / 1000);
 

@@ -285,6 +285,8 @@ int Audio::CollectHandleRel(unsigned char* pData, unsigned int nDataLen)
 			DEMO_DEBUG("[NetDownLost]over");
 			return 0;
 		}
+
+		m_netDownLost->InputData(pData, nDataLen);
 	}
 
 	if (m_enThirdStatus == DOWNBW)
@@ -297,9 +299,10 @@ int Audio::CollectHandleRel(unsigned char* pData, unsigned int nDataLen)
 			DEMO_DEBUG("[NetDownBw]over");
 			return 0;
 		}
+
+		m_netDownBw->InputData(pData, nDataLen);
 	}
-	
-	m_netDownBw->InputData(pData, nDataLen);
+
 	return 0;
 }
 

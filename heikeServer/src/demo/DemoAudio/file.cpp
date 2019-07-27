@@ -29,6 +29,8 @@ int File::MakeOneRtp(TPR_UINT32 uTimeStamp , TPR_UINT16 sSeqNo, TPR_BOOL bMarkBi
 		return 0;
 	}
 
+	memset(m_buf, 0, iLen);
+
 	TPR_UINT8 v = 2;
 
 	m_buf[0] |= (v << 6); //version

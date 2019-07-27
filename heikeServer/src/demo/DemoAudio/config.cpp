@@ -60,8 +60,16 @@ int DhlogformatWarp(char* szLevel, const char* format, ...)
 
 		if (g_DhLogFile)
 		{
+			if (ftell(g_DhLogFile) >= 5*1024 * 1024)
+			{
+				fclose(g_DhLogFile);
+				g_DhLogFile = fopen("demo.log", "wb+");
+			}
+
 			fprintf(g_DhLogFile, "%s", szTemp);
 			fflush(g_DhLogFile);
+
+			
 			return 0;
 		}
 

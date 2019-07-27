@@ -42,7 +42,7 @@ int Audio::SimpleParsePacket(unsigned char* pData, unsigned int nDataLen)
 		//解析RTCP包类型
 		if (!pData || nDataLen<4)
 		{
-			printf("RTCP packet length %d\n", nDataLen);
+			//printf("RTCP packet length %d\n", nDataLen);
 			return PACKET_ERROR;
 		}
 		return PACKET_RTCPVIDEO;

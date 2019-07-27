@@ -131,7 +131,7 @@ int Net::InputData( unsigned char* pData, int iDataLen )
 
 	if(iDataLen != TPR_SendTo(m_iDataSockFd,(TPR_VOIDPTR)pData,iDataLen, &m_serverAddr))
 	{
-		printf("TPR_SendTo device rtcp err\n");
+		//printf("TPR_SendTo device rtcp err\n");
 		return -1;
 	}
 	return 0;

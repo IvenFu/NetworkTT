@@ -24,12 +24,12 @@ int Qos::Open(CallbackFunc2 pCallback, CallbackFuncCmd pCallbackCmd, void* pUser
 	int nRet;
 	int nNPQId;
 
-	NPQ_SetLogFile("npp.log");
+	//NPQ_SetLogFile("npp.log");
 
 	nNPQId = NPQ_Create(role);
 	if (nNPQId < 0)
 	{
-		printf("NPQ_Create error! nRet =%x\n", nNPQId);
+		//printf("NPQ_Create error! nRet =%x\n", nNPQId);
 		return -1;
 	};
 

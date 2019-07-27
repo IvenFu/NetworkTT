@@ -9,7 +9,7 @@
 #if defined (OS_WINDOWS)
 #define TPR_INVALID_THREAD (HANDLE)(NULL)
 #elif defined (OS_POSIX)
-#define TPR_INVALID_THREAD (TPR_HANDLE)(-1)
+#define TPR_INVALID_THREAD (pthread_t)(-1)
 #endif
 
 /**

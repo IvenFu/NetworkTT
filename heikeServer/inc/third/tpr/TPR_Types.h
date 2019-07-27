@@ -50,7 +50,7 @@ typedef unsigned long   TPR_ULONG;
 		#include <cstdint>
 	#endif
 
-	typedef uintptr_t	TPR_UINT;
+	//typedef uintptr_t	TPR_UINT;
 	typedef intptr_t	TPR_INT;
 	typedef void*		TPR_PROC;
 #endif

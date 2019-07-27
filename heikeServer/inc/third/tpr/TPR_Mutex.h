@@ -47,9 +47,10 @@ public:
 	TPR_Mutex();
 	TPR_Mutex(TPR_UINT32 nFlag);
 	~TPR_Mutex();
-
 	TPR_INT32 Lock();
+
 	TPR_INT32 Unlock();
+
 	TPR_INT32 TryLock();
 
 private:

@@ -2,7 +2,8 @@
 
 #include "audio.h"
 
-
+#define PROBE_LOST_BITRATE (2*1024*1024)
+#define PROBE_BW_BITRATE (64*1024*1024)
 
 TPR_BOOL InitTPR::s_bInit = TPR_FALSE;
 
@@ -168,7 +169,7 @@ int Audio::NetDownLostHandleRel(unsigned char* pData, unsigned int nDataLen)
 		printf("[NetDownLost] begin\n");
 
 		m_llBeginTime = TPR_TimeNow();
-		m_file->SetBitRate(200 * 1024);
+		m_file->SetBitRate(PROBE_LOST_BITRATE);
 		m_enThirdStatus = DOWNLOST;
 	}
 
@@ -250,7 +251,7 @@ int Audio::NetDownBwHandleRel(unsigned char* pData, unsigned int nDataLen)
 		printf("[NetDownBw] begin\n");
 
 		m_llBeginTime = TPR_TimeNow();
-		m_file->SetBitRate(64 * 1024 * 1024);
+		m_file->SetBitRate(PROBE_BW_BITRATE);
 		m_enThirdStatus = DOWNBW;
 	}
 
@@ -294,7 +295,7 @@ int Audio::CollectHandleRel(unsigned char* pData, unsigned int nDataLen)
 		if (TPR_TimeNow() - m_llBeginTime > 5 * 1000 * 1000)
 		{
 			m_enThirdStatus = NONE;
-			m_file->SetBitRate(200 * 1024);
+			m_file->SetBitRate(PROBE_LOST_BITRATE);
 			printf("[NetDownBw]over\n");
 			DEMO_DEBUG("[NetDownBw]over");
 			return 0;
